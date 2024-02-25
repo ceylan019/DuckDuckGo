@@ -1,4 +1,5 @@
 POM
+
 There is a page package and we have created Java classes to keep each page of the app as a class Base Page and Search Page were written to serve this purpose. 
 
 StepDefinition Package
