@@ -45,7 +45,7 @@ public class VisatestTest {
 
     boolean repeat = true;
 
-    String expectedDate = "2025-09-12";
+    String expectedDate = "2025-03-10";
 
     int year, month, day;
 
@@ -123,9 +123,7 @@ public class VisatestTest {
                     //dateInputField.click();
                     dateInputField.sendKeys(date);
                     dateInputField.sendKeys(Keys.ENTER);
-                    dateInputField.sendKeys(Keys.ESCAPE);
-
-                    Thread.sleep(1000);
+                    wait.until(ExpectedConditions.presenceOfNestedElementLocatedBy(timeDropdownWebElement,By.xpath("//option[contains(text(),':')]")));
                     timeDropdown.selectByIndex(1);
 
                     Driver.getDriver().findElement(By.id("appointments_submit")).click();
@@ -141,7 +139,6 @@ public class VisatestTest {
 
                 //For Vancouver
                 cityDropdown.findElement(By.xpath("//option[. = 'Vancouver']")).click();
-                Thread.sleep(2000);
                 wait.until(ExpectedConditions.textToBe(By.id("appointments_consulate_address"), "Consular Address\n" +
                         "1075 West Pender Street\n" +
                         "Vancouver, BC, V6E 2M6\n" +
@@ -155,8 +152,7 @@ public class VisatestTest {
                     dateInputField.click();
                     dateInputField.sendKeys(date);
                     dateInputField.sendKeys(Keys.ENTER);
-                    dateInputField.sendKeys(Keys.ESCAPE);
-                    Thread.sleep(1000);
+                    wait.until(ExpectedConditions.presenceOfNestedElementLocatedBy(timeDropdownWebElement,By.xpath("//option[contains(text(),':')]")));
                     timeDropdown.selectByIndex(1);
 
                     Driver.getDriver().findElement(By.id("appointments_submit")).click();
@@ -170,7 +166,6 @@ public class VisatestTest {
 
                 //For Calgary
                 cityDropdown.findElement(By.xpath("//option[. = 'Calgary']")).click();
-                Thread.sleep(2000);
                 wait.until(ExpectedConditions.textToBe(By.id("appointments_consulate_address"), "Consular Address\n" +
                         "615 Macleod Trail, SE\n" +
                         "Suite 1000\n" +
@@ -185,8 +180,7 @@ public class VisatestTest {
                     dateInputField.click();
                     dateInputField.sendKeys(date);
                     dateInputField.sendKeys(Keys.ENTER);
-                    dateInputField.sendKeys(Keys.ESCAPE);
-                    Thread.sleep(2000);
+                    wait.until(ExpectedConditions.presenceOfNestedElementLocatedBy(timeDropdownWebElement,By.xpath("//option[contains(text(),':')]")));
                     timeDropdown.selectByIndex(1);
 
                     Driver.getDriver().findElement(By.id("appointments_submit")).click();
@@ -201,6 +195,7 @@ public class VisatestTest {
                 e.printStackTrace();
                 System.out.println("Exception accused! System rebooting!");
                 Driver.getDriver().get(Driver.getDriver().getCurrentUrl());
+                js.executeScript("document.getElementById('appointments_consulate_appointment_date').removeAttribute('readonly');");
             }
         } while (repeat == true);
 //      vars.put("i", js.executeScript("return 0"));
